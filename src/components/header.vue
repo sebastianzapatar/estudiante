@@ -5,13 +5,13 @@
                 <nav id="menu">
                     <ul>
                         <li>
-                            <router-link to="/home">Inicio</router-link>
+                            <router-link to="/home" active-class="active">Inicio</router-link>
                         </li>
                         <li>
-                            <router-link to="/estudiantes">Estudiantes</router-link>
+                            <router-link to="/estudiantes" active-class="active">Estudiantes</router-link>
                         </li>
                         <li>
-                            <router-link to="/insertar">Insertar</router-link>
+                            <router-link to="/insertar" active-class="active">Insertar</router-link>
                         </li>
                     </ul>
                 </nav>

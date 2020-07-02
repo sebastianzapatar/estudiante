@@ -54,6 +54,10 @@ body {
     margin-left: 15px;
     margin-right: 15px;
 }
+#menu .active{
+    text-decoration: none;
+    color:rgb(23, 8, 243);
+}
 #menu a{
     text-decoration: none;
     color: black;
@@ -103,6 +107,22 @@ body {
     transition: 300ms;
 }
 input[type="text"],textarea{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 5px;
+    max-width: 150px;
+}
+input[type="file"]{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 5px;
+    max-width: 150px;
+}
+input[type="number"]{
     width: 100%;
     height: 30px;
     border: 1px solid #eee;
@@ -179,4 +199,15 @@ textarea{
         padding: 0px;
         text-align: none;
     }
+}
+.p1{
+    font:italic;
+    color:red ;
+}
+.p2{
+    font:italic;
+    color:green;
+}.p3{
+    font-size: large;
+     color: rgb(23, 8, 243);
 }

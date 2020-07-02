@@ -1,16 +1,45 @@
 <template>
-<div>
-    <h2>Este es el compenente</h2>
-    <h3>{{mensaje}}</h3>
+<div class="center">
+    <Slider texto="Esta es la lista de estudiantes de fullstack que van a sacar 0"></Slider>
+    <h2>La lista</h2>
+    <article v-for="estudiante in estudiantes" :key="estudiante.id">
+        <div class="image-wrap">
+            <img :src="'http://localhost:3900/obtenerimagen/'+estudiante.image" :alt="estudiante.nombre"/><br/>
+            {{estudiante.nombre+" "+estudiante.apellido}}<br/>
+            {{estudiante.date}}<br/>
+            {{estudiante.date| moment('dddd-MMMM-YYYY')}}<br/>
+            {{estudiante.date| moment('from','now')}}<br/>
+        </div>
+    </article>
 </div>
     
 </template>
 <script>
+import Slider from './Slider.vue'
+import axios from 'axios';
+import Global from '../Global';
+
 export default {
     name:'mi_nino',
+    components:{
+        Slider,
+    },
+    methods:{
+        getEstudiantes(){
+            console.log(this.url)
+            axios.get(this.url+'listarestudiante/').then(res=>{
+                this.estudiantes=res.data.estudiantes;
+                console.log(this.estudiantes);
+            })
+        }
+    },
+    mounted(){
+        this.getEstudiantes();
+    },
     data(){
         return{
-            mensaje:"Soy el profesor y van a aprender vue.js",
+            estudiantes:null,
+            url:Global.url
         }
     }
 }

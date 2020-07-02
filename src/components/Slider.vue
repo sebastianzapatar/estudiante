@@ -1,11 +1,12 @@
 <template>
     <div id="slider" class="slider">
-            <h2>Seguimos en nuestro curso de fullstack, seguimos en una breve introducción de html, CSS y JavaScript </h2>
+            <h2>{{texto}}</h2>
     </div>
 </template>
 <script>
 export default {
-    
+    name:'Slider',
+    props:['texto']
 }
 </script>
 <style>
