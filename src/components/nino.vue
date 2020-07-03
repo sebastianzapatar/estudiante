@@ -20,7 +20,7 @@
         <br />
         <router-link :to="'/editar/'+estudiante._id" class="btn btn-danger">Editar</router-link>
         <a @click="deleteEstudiante(estudiante._id)" class="btn btn-warning">Eliminar</a>
-        <router-link :to="'/detalle/'+estudiante._id">Obtener más información</router-link>
+        <router-link :to="'/estudiante/'+estudiante._id">Obtener más información</router-link>
       </div>
     </article>
   </div>
