@@ -19,7 +19,8 @@
             </div>
             <div class="form-group">
                 <label for="imagen">Imagén</label>
-                <input type="file" name="imagen" placeholder="Suba su imagen"/>
+                <input type="file" id="file" ref="file" name="file0"  v-on:change="filechange()"/>
+               
             </div>
             <input type="submit" value="Guardar" class="btn btn-success"/>
         </form>
@@ -30,28 +31,57 @@ import axios from 'axios';
 import Global from '../Global';
 import Estudiante from './models/Estudiante';
 import Slider from './Slider.vue';
+import swal from 'sweetalert'
 export default {
     name:'insertar',
     components:{
         Slider,
     },
     methods:{
-        save(){
+       save(){
+           
             console.log(this.estudiante);
-            axios.post(this.url+'guardar',this.estudiante).then(res=>{
-                if(res.data){
-                     this.$router.push('/estudiantes');
-                }
-               
+           axios.post(this.url+'guardar',this.estudiante).then(res=>{
+                console.log(res.data);
+                var Estudianteid=res.data.message._id
+                
+                //Subida de archivo
+                const formdata=new FormData();
+                formdata.append('file0',
+                this.file,
+                this.file.name);
+                
+                axios.post(this.url+'subir-imagenestudiante/'+Estudianteid,formdata).then(res=>{
+                    if(res.data){
+                         swal("Inserto correctamente", "El estudiante", "success");
+                        this.$router.push('/estudiantes');
+                    }
+                    else{
+                        //Mostar error;
+                        swal(
+                            'Estudiante no se puedo crear',
+                            'El estudiante se ha creado correctamente',
+                            'error'
+                        );
+                    }
+                }).catch(err=>{
+                    console.log(err);
+                })
+
             }).catch(err=>{
                 console.log(err);
             })
+        },
+        filechange(){
+         this.file=this.$refs.file.files[0];
+         console.log(this.file); 
         }
     },
     data(){
         return{
             url:Global.url,
             estudiante:new Estudiante('','','',null,''),//Siempre se usan : y  no =
+            
         }  
     }
 }
