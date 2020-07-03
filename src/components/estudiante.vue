@@ -52,7 +52,7 @@ export default {
           axios.delete(this.url + "eliminarestudiante/" + id).then(res => {
             if (res.data) {
               swal("Estudiante eliminado");
-              this.$router.push("/home");
+              this.$router.push("/estudiantes");
             }
           });
         } else {
