@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="imagen">Imagén</label>
                 <input type="file" id="file" ref="file" name="file0"  v-on:change="filechange()"/>
-               
+               <img :src="'http://localhost:3900/obtenerimagen/'+estudiante.image" :alt="estudiante.nombre" width="30px"/><br/>
             </div>
             <input type="submit" value="Guardar" class="btn btn-success"/>
             
@@ -42,7 +42,7 @@ export default {
        save(){
            
             console.log(this.estudiante);
-           axios.post(this.url+'guardar',this.estudiante).then(res=>{
+           axios.put(this.url+'editarestudiante/'+this.estudiante._id,this.estudiante).then(res=>{
                 console.log(res.data);
                 var Estudianteid=res.data.message._id
                 
@@ -54,7 +54,7 @@ export default {
                 
                 axios.post(this.url+'subir-imagenestudiante/'+Estudianteid,formdata).then(res=>{
                     if(res.data){
-                         swal("Inserto correctamente", "El estudiante", "success");
+                         swal("Se actualizo el estudiante", "El estudiante", "success");
                         this.$router.push('/estudiantes');
                     }
                     else{
@@ -76,6 +76,14 @@ export default {
         filechange(){
          this.file=this.$refs.file.files[0];
          console.log(this.file); 
+        },
+        getEstudiante(id){
+            axios.get(this.url+'buscar/'+id).then(res=>{
+                if(res.data.status=='Éxito mi niño'){
+                    this.estudiante=res.data.message;
+                    console.log(this.estudiante);
+                }
+            })
         }
     },
     data(){
@@ -84,6 +92,12 @@ export default {
             estudiante:new Estudiante('','','',null,''),//Siempre se usan : y  no =
             
         }  
+    },
+    mounted(){
+        //vamos a coger el id y a procesarlo
+        var estudianteid=this.$route.params.id;
+        this.getEstudiante(estudianteid);
+        console.log(estudianteid);
     }
 }
 </script>

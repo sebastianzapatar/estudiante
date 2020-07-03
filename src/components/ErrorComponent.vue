@@ -5,7 +5,13 @@
         </h2>
         <p>
             La página no ha sido encontrada deje ser torpe
+            
         </p>
+
+
+    <button class="btn btn-danger navbar-btn">Button</button>
+ 
+
     </div>
 </template>
 <script>
