@@ -18,8 +18,7 @@
         <br />
         {{estudiante.date| moment('from','now')}}
         <br />
-        <router-link :to="'/editar/'+estudiante._id" class="btn btn-danger">Editar</router-link>
-        <a @click="deleteEstudiante(estudiante._id)" class="btn btn-warning">Eliminar</a>
+        
         <router-link :to="'/estudiante/'+estudiante._id">Obtener más información</router-link>
       </div>
     </article>
@@ -29,7 +28,7 @@
 import Slider from "./Slider.vue";
 import axios from "axios";
 import Global from "../Global";
-import swal from "sweetalert";
+
 export default {
   name: "mi_nino",
   components: {
@@ -43,26 +42,7 @@ export default {
         console.log(this.estudiantes);
       });
     },
-    deleteEstudiante(id) {
-      swal({
-        title: "¿Esta seguro de borrar al estudainte?",
-        text: "Esta operacion no se puede deshacer!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true
-      }).then(willDelete => {
-        if (willDelete) {
-          axios.delete(this.url + "eliminarestudiante/" + id).then(res => {
-            if (res.data) {
-              swal("Estudiante eliminado");
-              this.$router.push("/home");
-            }
-          });
-        } else {
-          swal("!No la embarraste!");
-        }
-      });
-    }
+    
   },
   mounted() {
     this.getEstudiantes();
