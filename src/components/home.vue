@@ -1,9 +1,14 @@
 <template>
-    <div>
-        <Slider texto="Estas en el home mono"></Slider>
-        {{personaje}}
-        <h1>{{url}}</h1>
-        <h2>Hola amigos</h2>
+    <div class="center">
+        <Slider texto="El buscador"></Slider>
+       <form  @submit.prevent="buscar">
+           <div class="form-group">
+               <label for="buscar">Buscar</label>
+               <input type="text" placeholder="Coloque la información" class="center" v-model='buscar1'  required/>
+               
+           </div>
+            <button type="submit" class="btn btn-primary" value="Buscar" >Enviar</button>
+       </form>
     </div>
 </template>
 <script>
@@ -12,6 +17,12 @@ export default {
     name:"home",
     components:{
         Slider,
+    },
+    methods:{
+        buscar(){
+            console.log(this.buscar1)
+            this.$router.push('/buscar/'+this.buscar1)
+        }
     },
     created(){
         console.log("Componente creado");
@@ -30,6 +41,7 @@ export default {
         return{
             personaje:"El chavo",
             url:null,
+            buscar1:null,
         }
     }
 }

@@ -6,6 +6,7 @@ import Nino from './components/nino.vue'
 import Insertar from './components/insertar.vue'
 import ErrorComponent from './components/ErrorComponent.vue'
 import Estudiante from './components/estudiante.vue'
+import Buscar from './components/buscar.vue'
 import moment from 'vue-moment';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css'
@@ -26,6 +27,7 @@ const routes=[
   {path:'/insertar',component:Insertar},
   {path:'/editar/:id',component:Editar},
   {path:'/estudiante/:id',component:Estudiante},
+  {path:'/buscar/:buscar',component:Buscar},
 ];
 const router=new Router({
   routes,
