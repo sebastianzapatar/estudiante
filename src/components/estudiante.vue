@@ -3,7 +3,7 @@
         <Slider :texto="'Detalles del estudiante '+estudiante.nombre+' '+estudiante.apellido "></Slider>
         <div class="center">
             <img
-            :src="'http://localhost:3900/obtenerimagen/'+estudiante.image"
+            :src="'http://localhost:3900/imagen/'+estudiante.image"
              :alt="estudiante.nombre"
              width="300px" />
         <br />

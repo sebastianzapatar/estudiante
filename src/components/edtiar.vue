@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="imagen">Imagén</label>
                 <input type="file" id="file" ref="file" name="file0"  v-on:change="filechange()"/>
-               <img :src="'http://localhost:3900/obtenerimagen/'+estudiante.image" :alt="estudiante.nombre" width="30px"/><br/>
+               <img :src="'http://localhost:3900/imagen/'+estudiante.image" :alt="estudiante.nombre" width="30px"/><br/>
             </div>
             <input type="submit" value="Guardar" class="btn btn-success"/>
             

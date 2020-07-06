@@ -5,7 +5,7 @@
     <article v-for="estudiante in estudiantes" :key="estudiante.id">
       <div class="image-wrap">
         <img
-          :src="'http://localhost:3900/obtenerimagen/'+estudiante.image"
+          :src="'http://localhost:3900/imagen/'+estudiante.image"
           :alt="estudiante.nombre"
           width="100px"
         />
